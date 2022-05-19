@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tamagotchi</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+		<script defer src="js/tamagotchi.js"></script>
+		<script defer src="js/script.js"></script>
+	</head>
+	<body>
+		<div class="wrapper flex-container flex-column space-evenly">
+			<header id="Tamagotchi-home" class="flex-container center">
+				<h1 class="text-center">Tamagotchi</h1>
+			</header>
+			<main class="flex-container space-between col-1">
+				<div class="life-stats flex-container flex-column">
+					<h2>Stats</h2>
+					<div class="hunger btn">Hunger: <span>0</span></div>
+					<div class="age btn">Age: <span>0</span></div>
+					<div class="boredom btn">Boredom: <span>0</span></div>
+					<div class="sleepiness btn">Sleep: <span>0</span></div>
+				</div>
+				<div class="tamagotchi-wrapper col-10">
+					<div id="tamagotchi" class="flex-container center"></div>
+					<div class="z-container hide">
+						<!-- // https://codepen.io/Charlie-93/pen/mqxWWJ?editors=1100 -->
+						<div class="zzz zzz-z">Z</div>
+						<div class="zzz zzz-zz">ZZ</div>
+						<div class="zzz zzz-zzz">ZZZ</div>
+					</div>
+				</div>
+				<div class="control-panel flex-container space-between col-1">
+					<div class="controls text-right flex-container flex-column">
+						<h2>Controls</h2>
+						<button class="feed">feed 🍔</button>
+						<button class="sleep">sleep 😴</button>
+						<button class="play">play 🛝</button>
+					</div>
+				</div>
+			</main>
+			<footer class="text-center">&copy; 2022 General Assembly</footer>
+		</div>
+	</body>
+</html>
