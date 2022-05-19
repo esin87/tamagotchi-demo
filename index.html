@@ -4,11 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tamagotchi</title>
+		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/reset.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 		<script defer src="js/tamagotchi.js"></script>
 		<script defer src="js/script.js"></script>
+		<script defer src="js/hearts.js"></script>
 	</head>
 	<body>
 		<div class="wrapper flex-container flex-column space-evenly">
@@ -42,6 +44,16 @@
 				</div>
 			</main>
 			<footer class="text-center">&copy; 2022 General Assembly</footer>
+			<section class="modal">
+				<div class="modal-inner text-center">
+					<h2>Welcome to Tamagotchi World!</h2>
+					<p>
+						Keep your pet alive by maintaining hunger, boredom, and sleepiness
+						under 20.
+					</p>
+					<button id="js-modal-btn">Get Started!</button>
+				</div>
+			</section>
 		</div>
 	</body>
 </html>

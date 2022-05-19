@@ -102,6 +102,8 @@ button {
   cursor: pointer;
 }
 button, .btn {
+  display: inline-block;
+  width: 200px;
   margin-bottom: 1rem;
   text-transform: uppercase;
   background-color: rgba(251, 248, 236, 0.75);
@@ -295,4 +297,33 @@ main {
     -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
   }
+}
+
+
+/* ===============================
+  Modal
+=============================== */
+.modal { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.modal-inner { 
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9d2c5;
+  box-shadow: 4px 1px 10px 0px #dadada;
+  border-radius: 4px;
+  padding: 3rem 3rem 1rem 3rem;
+}
+
+.modal-inner * {
+  margin-bottom: 1.5rem;
 }

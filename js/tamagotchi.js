@@ -9,7 +9,6 @@ class Tamagotchi {
 		this.hungerTimer = null;
 		this.boredomTimer = null;
 		this.sleepinessTimer = null;
-		this.sleeping = false;
 	}
 
 	incrementStat(stat) {
@@ -41,6 +40,10 @@ class Tamagotchi {
 			this.renderBoredom();
 		}, BOREDOM_INTERVAL);
 
+		this.startSleepinessTimer();
+	}
+
+	startSleepinessTimer() {
 		this.sleepinessTimer = setInterval(() => {
 			this.incrementStat('sleepiness');
 			this.renderSleepiness();

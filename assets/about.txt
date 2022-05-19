@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: VT323
+- Font Author: Copyright 2011, The VT323 Project Authors (peter.hull@oikoi.com)
+- Font Source: http://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2hsYHpT2dkNE.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
