@@ -81,7 +81,7 @@ class Tamagotchi {
 	}
 
 	checkGameOver() {
-		if (this.sleepiness >= 5 || this.hunger >= 5 || this.boredom >= 5) {
+		if (this.sleepiness >= 20 || this.hunger >= 20 || this.boredom >= 20) {
 			// clear stats intervals
 			clearInterval(this.ageTimer);
 			clearInterval(this.hungerTimer);
