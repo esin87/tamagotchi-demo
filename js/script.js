@@ -11,7 +11,7 @@ const TEEN_IMG = './assets/teen.webp';
 const ADULT_IMG = './assets/adult.webp';
 
 /*----- app's state (variables) -----*/
-let pet;
+let pet = null;
 
 /*----- cached element references -----*/
 // pet display
@@ -29,9 +29,12 @@ const zContainer = document.querySelector('.z-container');
 const feedBtn = document.querySelector('button.feed');
 const playBtn = document.querySelector('button.play');
 const sleepBtn = document.querySelector('button.sleep');
-// modal
+// play modal
 const modalEl = document.querySelector('.modal');
 const modalBtn = document.querySelector('#js-modal-btn');
+// game over modal
+const gameOverModalEl = document.querySelector('.modal-game-over');
+const playAgainBtn = document.querySelector('#js-play-again-btn');
 
 /*----- event listeners -----*/
 modalBtn.addEventListener('click', handleModalClick);
@@ -59,30 +62,32 @@ function toggleSleepAnimation(toggle) {
 }
 
 function handleSleep(event) {
-	if (pet.sleepiness === 0) return;
-	// while sleeping clear timer
-	clearInterval(pet.sleepinessTimer);
-	// while sleeping, other buttons can't be clicked
-	sleepBtn.removeEventListener('click', handleSleep);
-	feedBtn.removeEventListener('click', handleFeed);
-	playBtn.removeEventListener('click', handlePlay);
-	toggleSleepAnimation('on');
-	let currentVal = pet.sleepiness;
-	for (let i = 0; i <= currentVal; i++) {
-		setTimeout(() => {
-			pet.decrementStat('sleepiness');
-			pet.renderSleepiness();
-			if (pet.sleepiness === 0) {
-				toggleSleepAnimation('off');
-				// add back button functionality
-				feedBtn.addEventListener('click', handleFeed);
-				sleepBtn.addEventListener('click', handleSleep);
-				playBtn.addEventListener('click', handlePlay);
-				// start timer again
-				pet.startSleepinessTimer();
-			}
-		}, i * 1000);
-	}
+	pet.decrementStat('sleepiness');
+	pet.renderSleepiness();
+	// if (pet.sleepiness === 0) return;
+	// // while sleeping clear timer
+	// clearInterval(pet.sleepinessTimer);
+	// // while sleeping, other buttons can't be clicked
+	// sleepBtn.removeEventListener('click', handleSleep);
+	// feedBtn.removeEventListener('click', handleFeed);
+	// playBtn.removeEventListener('click', handlePlay);
+	// toggleSleepAnimation('on');
+	// let currentVal = pet.sleepiness;
+	// for (let i = 0; i <= currentVal; i++) {
+	// 	setTimeout(() => {
+	// 		pet.decrementStat('sleepiness');
+	// 		pet.renderSleepiness();
+	// 		if (pet.sleepiness === 0) {
+	// 			toggleSleepAnimation('off');
+	// 			// add back button functionality
+	// 			feedBtn.addEventListener('click', handleFeed);
+	// 			sleepBtn.addEventListener('click', handleSleep);
+	// 			playBtn.addEventListener('click', handlePlay);
+	// 			// start timer again
+	// 			pet.startSleepinessTimer();
+	// 		}
+	// 	}, i * 1000);
+	// }
 }
 
 function handleFeed(event) {
@@ -137,16 +142,33 @@ function initEgg() {
 function clearEgg() {
 	tamagotchiEl.innerHTML = '';
 }
+
 function initGame() {
-	pet = new Tamagotchi('Esinator');
+	pet = new Tamagotchi();
+	console.log('init');
+	console.log(pet);
 	initEgg();
 	setTimeout(() => {
 		clearEgg();
 		modalEl.remove();
 		pet.start();
-		/*----- event listeners -----*/
+		/*----- enable event listeners on ctrl btns -----*/
 		feedBtn.addEventListener('click', handleFeed);
 		sleepBtn.addEventListener('click', handleSleep);
 		playBtn.addEventListener('click', handlePlay);
 	}, EGG_DURATION);
+}
+
+function handleGameOver() {
+	pet = null;
+	sleepBtn.removeEventListener('click', handleSleep);
+	feedBtn.removeEventListener('click', handleFeed);
+	playBtn.removeEventListener('click', handlePlay);
+	tamagotchiEl.innerHTML = '';
+	gameOverModalEl.classList.remove('hide');
+	playAgainBtn.addEventListener('click', (event) => {
+		// initGame();
+		// gameOverModalEl.classList.add('hide');
+		window.location.reload();
+	});
 }
